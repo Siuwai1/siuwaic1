@@ -263,7 +263,7 @@ CREATE TABLE LoanInfo (
 The Git repository has been updated to reflect these changes. The SQL scripts for creating the data warehouse, as well as the scripts from previous steps, have been updated accordingly. The fact and dimension tables are defined with surrogate keys for efficient data management and analysis. The deliverables include the data model documentation, SQL scripts, and a fully accessible data warehouse. 
 
 ---
-This is the script that built the data warehouses with python and the combined_data.csv file: 
+This is the script called DW and ETL Script.ipynb that built the data warehouses with python and the combined_data.csv file: 
 ```python
 from azure.storage.blob import BlobServiceClient
 import pandas as pd
