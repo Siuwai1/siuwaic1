@@ -359,5 +359,10 @@ for csv_file in csv_files:
     print(f"Uploaded: {csv_file} to {container_name_dwtables}/{blob_name}")
 ```
 ---
-We employed Azure Data Factory to seamlessly transfer data from Azure Storage Blob to our designated tables. Leveraging the robust capabilities of Data Factory, we orchestrated an efficient data movement process, ensuring a smooth and reliable data flow. Our data factory is called 'cis4400ppsc'.
-![Alt text](.png)
+We employed Azure Data Factory to seamlessly transfer data from Azure Storage Blob to our designated tables. Leveraging the robust capabilities of Data Factory, we orchestrated an efficient data movement process, ensuring a smooth and reliable data flow. Our data factory is called 'cis4400ppsc'. Some of our transformations were conducted in this step too. 
+![Alt text](Azure-Data-Factory.png)
+
+---
+Serving
+---
+We utilized Tableau to serve our data files and produce visualizations for insights. 
