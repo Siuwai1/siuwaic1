@@ -202,3 +202,4 @@ combined_data.csv : https://cis4400pp.blob.core.windows.net/combineddata/combine
 Data Storage
 ---
 We utilized Microsoft Azure Blob Storage as our data storage option to provide a scalable and secure foundation for ongoing exploration and analysis but also offer a transparent glimpse into the contents via the Azure Storage Blob interface. All the data sets are stored in the Storage Account called 'cis4400pp'. There are 5 different containers called 'combineddata', 'datadictionaries', 'dwtables', 'rawdata', and 'scripts'. 
+![Alt text](AzureStorage.png)
