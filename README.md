@@ -12,7 +12,10 @@ We first acquired the data sets from Freddie Mac's official website, https://www
 Data Dictionary: https://cis4400pp.blob.core.windows.net/datadictionaries/data_dictionary.pdf
 
 The links for the Raw Data Sets in .txt format are attached below: 
+
 sample origination data for the Year 2020: https://cis4400pp.blob.core.windows.net/rawdata/sample_orig_2020.txt
+
 sample origination data for the Year 2021: https://cis4400pp.blob.core.windows.net/rawdata/sample_orig_2021.txt
+
 sample origination data for the Year 2022: https://cis4400pp.blob.core.windows.net/rawdata/sample_orig_2022.txt
 
