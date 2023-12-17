@@ -1,0 +1,83 @@
+pip install pandas azure-storage-blob
+from azure.storage.blob import BlobServiceClient
+import pandas as pd
+import os
+
+account_name = 'cis4400pp'
+account_key = 'v5P+piRvmQQjp+PYMyBTR6oV8JSjJIYxUZCpEnDrTdsKqduDPFGOAhN/vLo2r8H3ye873+A2IG7K+AStmNDHsQ=='
+container_name = 'rawdata'
+new_container_name = 'combineddata'
+local_pathway = 'C:/Users/User/Desktop/School/Baruch Stuffs/FALL 2023/CIS 4400/downloaded_raw_data/'
+
+blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+container_client = blob_service_client.get_container_client(container_name)
+
+# List all CSV files in the container
+blob_list = container_client.list_blobs()
+
+for blob in blob_list:
+    # Check if the file has a ".txt" extension
+    if blob.name.endswith('.txt'):
+        blob_client = container_client.get_blob_client(blob.name)
+        blob_data = blob_client.download_blob()
+        local_file_path = os.path.join(local_pathway, blob.name.split("/")[-1])
+        with open(local_file_path, 'wb') as local_file:
+            local_file.write(blob_data.readall())
+        print(f"Downloaded: {blob.name} to {local_file_path}")
+        
+# List local TXT files
+local_txt_files = [f for f in os.listdir(local_pathway) if f.endswith('.txt')]
+
+# Read local TXT files into DataFrames
+local_txt_dataframes = [pd.read_csv(os.path.join(local_pathway, file), header=None, sep='|') for file in local_txt_files]
+
+# Merge DataFrames vertically and drop duplicates
+combined_df = pd.concat(local_txt_dataframes, ignore_index=True).drop_duplicates()
+
+# Fill zeros for empty values
+combined_df = combined_df.fillna(0)
+
+combined_df.columns = ['CREDIT_SCORE',
+                          'FIRST_PAYMENT_DATE',
+                          'FIRST_TIME_HOMEBUYER_FLAG',
+                          'MATURITY_DATE',
+                          'MSA',
+                          'MORTGAGE_INSURANCE_PERCENTAGE',
+                          'NUMBER_OF_UNITS',
+                          'OCCUPANCY_STATUS',
+                          'ORIGINAL_CLTV',
+                          'ORIGINAL_DTI_RATIO',
+                          'ORIGINAL_UPB',
+                          'ORIGINAL_LTV',
+                          'ORIGINAL_INTEREST_RATE',
+                          'CHANNEL',
+                          'PPM_FLAG',
+                          'AMORTIZATION_TYPE',
+                          'PROPERTY_STATE',
+                          'PROPERTY_TYPE',
+                          'POSTAL_CODE',
+                          'LOAN_SEQUENCE_NUMBER',
+                          'LOAN_PURPOSE',
+                          'ORIGINAL_LOAN_TERM',
+                          'NUMBER_OF_BORROWERS',
+                          'SELLER_NAME',
+                          'SERVICER_NAME',
+                          'SUPER_CONFORMING_FLAG',
+                          'PRE-RELIEF_REFINANCE_LOAN_SEQUENCE_NUMBER',
+                          'PROGRAM_INDICATOR',
+                          'RELIEF_REFINANCE_INDICATOR',
+                          'PROPERTY_VALUATION_METHOD',
+                          'INTEREST_ONLY_INDICATOR',
+                          'MI_CANCELLATION_INDICATOR']
+
+# Convert to CSV format
+combined_csv_output = os.path.join(local_pathway, 'combined_data.csv')
+combined_df.to_csv(combined_csv_output, index=False)
+
+# Upload the combined CSV file to the different existing container
+new_container_client = blob_service_client.get_container_client(new_container_name)
+new_blob_client = new_container_client.get_blob_client('combined_data.csv')
+
+with open(combined_csv_output, 'rb') as data:
+    new_blob_client.upload_blob(data, overwrite=True)
+    print(f"Uploaded: combined_data.csv to {new_container_name}")
