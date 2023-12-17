@@ -5,7 +5,7 @@ Business Problem
 We, Cheng Mortgage Services, want to improve how we handle home loans. We're facing more customers having trouble repaying their mortgages. To tackle this, we need to make sense of a big dataset from Freddie Mac. But it's tricky because the data is huge and complicated. Cheng Mortgage Services needs a solution to quickly figure out which loans are risky, predict if someone might not be able to pay, and take steps to avoid losing money
 
 ---
-Data Sourcing
+Sourcing
 ---
 We first acquired the data sets from Freddie Mac's official website, https://www.freddiemac.com/research/datasets/sf-loanlevel-dataset. We specifically picked Loan-Level Dataset Files which are Standard and Annual. Then we chose the sample data sets for the years 2020, 2021, and 2022 from the Originating Files. The sample dataset is a simple random sample of 50,000 loans selected from each full vintage year and a proportionate number of loans from each partial vintage year of the Standard Dataset. Included in the file is the User Guide of this data set, which serves as our Data Dictionary. You can access it in Github or through this link:
 
@@ -199,7 +199,7 @@ This is the Combined CSV File uploaded to Microsoft Azure Storage Blob:
 combined_data.csv : https://cis4400pp.blob.core.windows.net/combineddata/combined_data.csv
 
 ---
-Data Storage
+Storage
 ---
 We utilized Microsoft Azure Blob Storage as our data storage option to provide a scalable and secure foundation for ongoing exploration and analysis but also offer a transparent glimpse into the contents via the Azure Storage Blob interface. All the data sets are stored in the Storage Account called 'cis4400pp'. There are 5 different containers called 'combineddata', 'datadictionaries', 'dwtables', 'rawdata', and 'scripts'. 
 ![Alt text](AzureStorage.png)
@@ -263,7 +263,11 @@ CREATE TABLE LoanInfo (
 The Git repository has been updated to reflect these changes. The SQL scripts for creating the data warehouse, as well as the scripts from previous steps, have been updated accordingly. The fact and dimension tables are defined with surrogate keys for efficient data management and analysis. The deliverables include the data model documentation, SQL scripts, and a fully accessible data warehouse. 
 
 ---
-This is the script called DW and ETL Script.ipynb that built the data warehouses with python and the combined_data.csv file: 
+Transformation
+---
+This is the script called DW and ETL Script.ipynb that built the data warehouses with Python programming and the combined_data.csv file: 
+(You can refer to the Transformed CSV Script for the specific transformation process.)
+
 ```python
 from azure.storage.blob import BlobServiceClient
 import pandas as pd
