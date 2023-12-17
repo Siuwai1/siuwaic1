@@ -266,6 +266,7 @@ The Git repository has been updated to reflect these changes. The SQL scripts fo
 Transformation
 ---
 This is the script called DW and ETL Script.ipynb that built the data warehouses with Python programming and the combined_data.csv file: 
+
 (You can refer to the Transformed CSV Script for the specific transformation process.)
 
 ```python
@@ -357,3 +358,6 @@ for csv_file in csv_files:
 
     print(f"Uploaded: {csv_file} to {container_name_dwtables}/{blob_name}")
 ```
+---
+We employed Azure Data Factory to seamlessly transfer data from Azure Storage Blob to our designated tables. Leveraging the robust capabilities of Data Factory, we orchestrated an efficient data movement process, ensuring a smooth and reliable data flow. Our data factory is called 'cis4400ppsc'.
+![Alt text](.png)
