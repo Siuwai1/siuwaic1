@@ -197,3 +197,7 @@ with open(combined_csv_output, 'rb') as data:
 This is the Combined CSV File uploaded to Microsoft Azure Storage Blob:
 
 combined_data.csv : https://cis4400pp.blob.core.windows.net/combineddata/combined_data.csv
+
+---
+Data Storage
+---
