@@ -261,3 +261,95 @@ CREATE TABLE LoanInfo (
 );
 ```
 The Git repository has been updated to reflect these changes. The SQL scripts for creating the data warehouse, as well as the scripts from previous steps, have been updated accordingly. The fact and dimension tables are defined with surrogate keys for efficient data management and analysis. The deliverables include the data model documentation, SQL scripts, and a fully accessible data warehouse. 
+
+---
+This is the script that built the data warehouses with python and the combined_data.csv file: 
+```python
+from azure.storage.blob import BlobServiceClient
+import pandas as pd
+from io import StringIO
+
+# Azure Storage account information
+account_name = 'cis4400pp'
+account_key = 'v5P+piRvmQQjp+PYMyBTR6oV8JSjJIYxUZCpEnDrTdsKqduDPFGOAhN/vLo2r8H3ye873+A2IG7K+AStmNDHsQ=='
+container_name = 'combineddata'
+blob_name = 'combined_data.csv'
+
+# Connect to Azure Storage Blob
+blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+container_client = blob_service_client.get_container_client(container_name)
+blob_client = container_client.get_blob_client(blob_name)
+
+# Download CSV file from Azure Blob Storage
+blob_data = blob_client.download_blob()
+df = pd.read_csv(StringIO(blob_data.readall().decode('utf-8')))
+
+# Drop redundant columns
+redundant_columns = ['MSA','PPM_FLAG','AMORTIZATION_TYPE','LOAN_PURPOSE','SUPER_CONFORMING_FLAG',
+                     'PRE-RELIEF_REFINANCE_LOAN_SEQUENCE_NUMBER','PROGRAM_INDICATOR','RELIEF_REFINANCE_INDICATOR',
+                     'PROPERTY_VALUATION_METHOD','INTEREST_ONLY_INDICATOR','MI_CANCELLATION_INDICATOR']
+
+df = df.drop(columns = redundant_columns, errors='ignore')
+
+# Format columns to YYYY-MM
+date_columns = ['FIRST_PAYMENT_DATE','MATURITY_DATE']
+for col in date_columns:
+    df[col] = pd.to_datetime(df[col], format='%Y%m', errors='coerce').dt.strftime('%Y-%m')
+
+# Convert columns to numeric
+numeric_columns = ['CREDIT_SCORE', 'POSTAL_CODE','ORIGINAL_UPB','ORIGINAL_LOAN_TERM','NUMBER_OF_UNITS','NUMBER_OF_BORROWERS']
+df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
+
+# Convert columns to percentage
+percentage_columns = ['MORTGAGE_INSURANCE_PERCENTAGE','ORIGINAL_CLTV','ORIGINAL_DTI_RATIO','ORIGINAL_LTV','ORIGINAL_INTEREST_RATE']
+df[percentage_columns] = df[percentage_columns].apply(pd.to_numeric, errors='coerce')/100
+
+print(df.head())
+
+# Create "customerinfo" DataFrame
+customerinfo = df[['CREDIT_SCORE', 'FIRST_TIME_HOMEBUYER_FLAG']]
+
+# Create "loaninfo" DataFrame
+loaninfo = df[['LOAN_SEQUENCE_NUMBER', 'FIRST_PAYMENT_DATE', 'MATURITY_DATE', 'MORTGAGE_INSURANCE_PERCENTAGE',
+                     'OCCUPANCY_STATUS', 'ORIGINAL_CLTV', 'ORIGINAL_DTI_RATIO', 'ORIGINAL_UPB', 'ORIGINAL_LTV',
+                     'ORIGINAL_INTEREST_RATE', 'CHANNEL', 'ORIGINAL_LOAN_TERM', 'NUMBER_OF_BORROWERS', 'SELLER_NAME',
+                     'SERVICER_NAME', 'NUMBER_OF_UNITS']]
+
+# Create "propertiesinfo" DataFrame
+propertiesinfo = df[['PROPERTY_STATE', 'POSTAL_CODE', 'PROPERTY_TYPE']]
+
+# Display the new DataFrames
+print("\nCustomer Info DataFrame:")
+print(customerinfo.head())
+
+print("\nLoan Info DataFrame:")
+print(loaninfo.head())
+
+print("\nProperties Info DataFrame:")
+print(propertiesinfo.head())
+
+import os
+# Save DataFrames to CSV files
+customerinfo.to_csv('customerinfo.csv', index=False)
+loaninfo.to_csv('loaninfo.csv', index=False)
+propertiesinfo.to_csv('propertiesinfo.csv', index=False)
+
+container_name_dwtables = 'dwtables'
+
+# Connect to Azure Storage Blob for the "dwtables" container
+blob_service_client_dwtables = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+container_client_dwtables = blob_service_client_dwtables.get_container_client(container_name_dwtables)
+
+# List of CSV files to upload
+csv_files = ['customerinfo.csv', 'loaninfo.csv', 'propertiesinfo.csv']
+
+# Upload each CSV file to Azure Blob Storage in "dwtables" container
+for csv_file in csv_files:
+    blob_name = os.path.basename(csv_file)
+    blob_client_dwtables = container_client_dwtables.get_blob_client(blob_name)
+    
+    with open(csv_file, 'rb') as data:
+        blob_client_dwtables.upload_blob(data, overwrite=True)
+
+    print(f"Uploaded: {csv_file} to {container_name_dwtables}/{blob_name}")
+```
