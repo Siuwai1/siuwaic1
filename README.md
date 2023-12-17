@@ -209,4 +209,5 @@ Modeling
 ---
 In the process of modeling the data warehouse, We utilized a combination of Microsoft Access for visualization and Microsoft SQL Server Management Studio (SSMS) for creating the actual database. The Access model, which can be viewed here, served as a visual guide.
 ![Alt text](DataWarehouse.png)
+
 The database schema includes key dimensions and fact tables. Here's a brief description of the tables:
