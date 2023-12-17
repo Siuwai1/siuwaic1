@@ -260,3 +260,4 @@ CREATE TABLE LoanInfo (
     FOREIGN KEY (PROPERTY_ID) REFERENCES PropertiesInfo(PROPERTY_ID)
 );
 ```
+The Git repository has been updated to reflect these changes. The SQL scripts for creating the data warehouse, as well as the scripts from previous steps, have been updated accordingly. The fact and dimension tables are defined with surrogate keys for efficient data management and analysis. The deliverables include the data model documentation, SQL scripts, and a fully accessible data warehouse. 
