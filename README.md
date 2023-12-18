@@ -29,7 +29,7 @@ import os
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 # Connect to Azure Storage Account
-connection_string = "DefaultEndpointsProtocol=https;AccountName=cis4400pp;AccountKey=v5P+piRvmQQjp+PYMyBTR6oV8JSjJIYxUZCpEnDrTdsKqduDPFGOAhN/vLo2r8H3ye873+A2IG7K+AStmNDHsQ==;EndpointSuffix=core.windows.net"
+connection_string = ""
 blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 
 # Container and Blob Names
@@ -116,7 +116,7 @@ import pandas as pd
 import os
 
 account_name = 'cis4400pp'
-account_key = 'v5P+piRvmQQjp+PYMyBTR6oV8JSjJIYxUZCpEnDrTdsKqduDPFGOAhN/vLo2r8H3ye873+A2IG7K+AStmNDHsQ=='
+account_key = ''
 container_name = 'rawdata'
 new_container_name = 'combineddata'
 local_pathway = 'C:/Users/User/Desktop/School/Baruch Stuffs/FALL 2023/CIS 4400/downloaded_raw_data/'
@@ -276,7 +276,7 @@ from io import StringIO
 
 # Azure Storage account information
 account_name = 'cis4400pp'
-account_key = 'v5P+piRvmQQjp+PYMyBTR6oV8JSjJIYxUZCpEnDrTdsKqduDPFGOAhN/vLo2r8H3ye873+A2IG7K+AStmNDHsQ=='
+account_key = ''
 container_name = 'combineddata'
 blob_name = 'combined_data.csv'
 
