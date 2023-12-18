@@ -369,6 +369,8 @@ We utilized Tableau to serve our data files and produce visualizations for insig
 
 In the first dashboard, we produced a column chart that showed the amount of loans for various types of properties, a pie graph that showed the percentage of each channel originating loans and the corresponding average interest rate, and a heat map that showed the amount of loans originated by state from 2020 to 2022.
 
+https://public.tableau.com/views/cis4400ppvisualization1/Dashboard1?:language=zh-CN&:display_count=n&:origin=viz_share_link
+
 1. Single-familyed housing was the one that was approved for the most amount of loans totaling 26.5 billion USD; Co-op housing was the least popular one totaling 72.8 million USD.
 2. Over half of the loans were released by retail, a mortgage loan that is originated, underwritten, and funded by a lender or its Affiliates, with an average interest rate of 3.68%. It has the lowest average interest rate among the three channels.
 3. California originated the most amount of loans totaling 7.5 billion USD. Texas was the second totaling 3.2 billion USD and Florida was the third totaling 3.0 billion USD. Wyoming was the one with the least amount of loans originated totaling 62 million USD. 
@@ -377,6 +379,8 @@ In the first dashboard, we produced a column chart that showed the amount of loa
 
 ---
 In the second dashboard, we produced a line chart that showed the relationship between credit scores and the average amount of loans each received, a column chart that showed the average interest rate and mortgage insurance percentage of each seller with a slider/filter of the month, and a combined line chart that showed the average Combine Loan-to-Value ratio, average interest rate, average Debt-to-Income ratio, and average amount of loans by their first payment dates from February 2020 to July 2023.
+
+https://public.tableau.com/views/cis4400ppvisualization/Dashboard2?:language=zh-CN&:display_count=n&:origin=viz_share_link
 
 Some definitions/terms would be helpful to understand:
 
