@@ -365,4 +365,4 @@ We employed Azure Data Factory to seamlessly transfer data from Azure Storage Bl
 ---
 Serving
 ---
-We utilized Tableau to serve our data files and produce visualizations for insights. 
+We utilized Tableau to serve our data files and produce visualizations for insights. Below are two dashboards that embody 6 charts to produce insightful findings. In the first dashboard, we produced a column graph that showed the amount of loans for various types of properties. Single-familyed housing is the one that was approved for the most amount of loans totaling 26.5 billion US dollars from 2020 to 2022. Co-op housing is the least popular one totaling 72.8 million US dollars.
