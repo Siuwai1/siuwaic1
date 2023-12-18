@@ -365,10 +365,28 @@ We employed Azure Data Factory to seamlessly transfer data from Azure Storage Bl
 ---
 Serving
 ---
-We utilized Tableau to serve our data files and produce visualizations for insights. Below are two dashboards that embody 6 charts to produce insightful findings. These findings could be critical to real estate investors and those considering buying properties. In the first dashboard, we produced a column chart that showed the amount of loans for various types of properties, a pie graph that showed the percentage of each channel originating loans and the corresponding average interest rate, and a heat map that showed the amount of loans originated by state from 2020 to 2022.
+We utilized Tableau to serve our data files and produce visualizations for insights. Below are two dashboards that embody 6 charts to produce insightful findings. These findings could be critical to real estate investors and those considering buying properties. 
 
-1. Single-familyed housing is the one that was approved for the most amount of loans totaling 26.5 billion USD; Co-op housing is the least popular one totaling 72.8 million USD.
+In the first dashboard, we produced a column chart that showed the amount of loans for various types of properties, a pie graph that showed the percentage of each channel originating loans and the corresponding average interest rate, and a heat map that showed the amount of loans originated by state from 2020 to 2022.
+
+1. Single-familyed housing was the one that was approved for the most amount of loans totaling 26.5 billion USD; Co-op housing was the least popular one totaling 72.8 million USD.
 2. Over half of the loans were released by retail, a mortgage loan that is originated, underwritten, and funded by a lender or its Affiliates, with an average interest rate of 3.68%. It has the lowest average interest rate among the three channels.
 3. California originated the most amount of loans totaling 7.5 billion USD. Texas was the second totaling 3.2 billion USD and Florida was the third totaling 3.0 billion USD. Wyoming was the one with the least amount of loans originated totaling 62 million USD. 
 
 ![Alt text](Dashboard1.png)
+
+---
+In the second dashboard, we produced a line chart that showed the relationship between credit scores and the average amount of loans each received, a column chart that showed the average interest rate and mortgage insurance percentage of each seller with a slider/filter of the month, and a combined line chart that showed the average Combine Loan-to-Value ratio, average interest rate, average Debt-to-Income ratio, and average amount of loans by their first payment dates from February 2020 to July 2023.
+
+Some definitions/terms would be helpful to understand:
+
+UPB - Unpaid Principal Balance: the amount of the mortgage on the note date. 
+Combine Loan-to-Value ratio (CLTV): an often used ratio in mortgage lending to determine the amount necessary to put in a down payment and whether a lender will extend credit to a borrower. High LTV ratios are considered higher-risk loans. Lower LTVs are better in the eyes of lenders but require borrowers to come up with larger down payments. Mortgages become more expensive for borrowers with higher LTVs.
+Debt-to-Income ratio (DTI): measures the amount of income a person or organization generates to service a debt. A DTI of 43% is typically the highest ratio a borrower can have and still get qualified for a mortgage, but lenders generally seek ratios of no more than 36%. A low DTI ratio indicates sufficient income relative to debt servicing, and it makes a borrower more attractive.
+
+
+4. The upward trend showed credit score had a positive relationship with the amount of loans we could receive.
+5. Throughout the years, the Seller Amerisave Mortgage Corporation provided the lowest interest rate and lowest mortgage insurance percentage. With the filter, we could pinpoint the month that we planned to borrow loans and look for the seller that provided the lowest interest and mortgage insurance historically.
+6. The average interest rate, average Debt-to-Income ratio, and loan amounts had presented upward trends throughout the past 3 years, potentially due to the pandemic and stagnant economy. With the average interest rate plummeting in April 2023 and people borrowing more people to spend, it led to a skyrocket in the Debt-To-Income ratio and the amount of loans originated.
+
+![Alt text](Dashboard2.png)
