@@ -381,7 +381,9 @@ In the second dashboard, we produced a line chart that showed the relationship b
 Some definitions/terms would be helpful to understand:
 
 UPB - Unpaid Principal Balance: the amount of the mortgage on the note date. 
+
 Combine Loan-to-Value ratio (CLTV): an often used ratio in mortgage lending to determine the amount necessary to put in a down payment and whether a lender will extend credit to a borrower. High LTV ratios are considered higher-risk loans. Lower LTVs are better in the eyes of lenders but require borrowers to come up with larger down payments. Mortgages become more expensive for borrowers with higher LTVs.
+
 Debt-to-Income ratio (DTI): measures the amount of income a person or organization generates to service a debt. A DTI of 43% is typically the highest ratio a borrower can have and still get qualified for a mortgage, but lenders generally seek ratios of no more than 36%. A low DTI ratio indicates sufficient income relative to debt servicing, and it makes a borrower more attractive.
 
 
