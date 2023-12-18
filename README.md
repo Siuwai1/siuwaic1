@@ -365,4 +365,8 @@ We employed Azure Data Factory to seamlessly transfer data from Azure Storage Bl
 ---
 Serving
 ---
-We utilized Tableau to serve our data files and produce visualizations for insights. Below are two dashboards that embody 6 charts to produce insightful findings. In the first dashboard, we produced a column graph that showed the amount of loans for various types of properties. Single-familyed housing is the one that was approved for the most amount of loans totaling 26.5 billion US dollars from 2020 to 2022. Co-op housing is the least popular one totaling 72.8 million US dollars.
+We utilized Tableau to serve our data files and produce visualizations for insights. Below are two dashboards that embody 6 charts to produce insightful findings. These findings could be critical to real estate investors and those considering buying properties. In the first dashboard, we produced a column chart that showed the amount of loans for various types of properties, a pie graph that showed the percentage of each channel originating loans and the corresponding average interest rate, and a heat map that showed the amount of loans originated by state from 2020 to 2022.
+
+1. Single-familyed housing is the one that was approved for the most amount of loans totaling 26.5 billion USD; Co-op housing is the least popular one totaling 72.8 million USD.
+2. Over half of the loans were released by retail, a mortgage loan that is originated, underwritten, and funded by a lender or its Affiliates, with an average interest rate of 3.68%. It has the lowest average interest rate among the three channels.
+3. California originated the most amount of loans totaling 7.5 billion USD. Texas was the second totaling 3.2 billion USD and Florida was the third totaling 3.0 billion USD. Wyoming was the one with the least amount of loans originated totaling 62 million USD. 
